@@ -1,8 +1,10 @@
 import React,{useState,useRef} from 'react'
-import {DropDownOptions, uniqueApi} from '../utils/Constants'
 import Dropdown from './Dropdown';
 import ModalFooter from './ModalFooter';
 import { FormatApi } from '../utils/HelperFunctions/FormatApi';
+import { uniqueApi } from '../utils/Constants';
+
+
 const AddAudience = ({hideAddAudience}) => {
   const [segments, setSegments] = useState ("");
   const [selectedSegments, setSelectedSegments] = useState ([]);
@@ -93,8 +95,10 @@ function handleClick(type) {
 }
 
 async function  handleAPiCall() {
+  
   try{
-      const nameValue = nameOfSegment.current.value.replace(/\s+/g, ' ').trim();
+
+  const nameValue = nameOfSegment.current.value.replace(/\s+/g, ' ').trim();
  const finalData =  FormatApi(nameValue,selectedSegments)
  const res = await fetch(uniqueApi,{
     method:"POST",
