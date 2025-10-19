@@ -1,8 +1,10 @@
 import React,{useState,useRef} from 'react'
-import {DropDownOptions, uniqueApi} from '../utils/Constants'
 import Dropdown from './Dropdown';
 import ModalFooter from './ModalFooter';
 import { FormatApi } from '../utils/HelperFunctions/FormatApi';
+import { LIT_CODES, uniqueApi } from '../utils/Constants';
+
+
 const AddAudience = ({hideAddAudience}) => {
   const [segments, setSegments] = useState ("");
   const [selectedSegments, setSelectedSegments] = useState ([]);
@@ -30,21 +32,22 @@ const AddAudience = ({hideAddAudience}) => {
    }else{
         setErrorMsg((prev)=>({
         ...prev,
-        segment:"Oops Segment already added try different one"
+        segment:LIT_CODES.segmentSelectedTryOther
       }))
        selectedSegments.length>3 && errorScroll.current.scrollIntoView({behaviour:"smooth"})
     }
 }else{
       setErrorMsg((prev)=>({
         ...prev,
-        segment:"! Please select  one segment from dropdown before proceeding"
+        segment:LIT_CODES.selectOneSegment
       }))
          selectedSegments.length>3 && errorScroll.current.scrollIntoView({behaviour:"smooth"})
     }
   
   }
   function handleDynamicDropDowns(selctID,newVal){
-   const exisitngSegments = selectedSegments.some(item=>item.selectedVal=== newVal)
+   
+   const exisitngSegments = selectedSegments.some(item=>item.selectedVal=== newVal) 
  if(!exisitngSegments){
    setSelectedSegments((prev)=>prev.map((val)=>{
     if(val.id === selctID){
@@ -62,7 +65,7 @@ const AddAudience = ({hideAddAudience}) => {
  }else{
  setErrorMsg((prev)=>({
         ...prev,
-        segment:"Oops Segment already added try different one"
+        segment:LIT_CODES.segmentSelectedTryOther
       }))
        selectedSegments.length>3 && errorScroll.current.scrollIntoView({behaviour:"smooth"})
  }
@@ -79,10 +82,11 @@ function handleClick(type) {
   const nameValue = nameOfSegment.current.value.trim();
   let errors = { input: "", segment: "" };
   if (!nameValue) {
-    errors.input = "! Please provide the name of the Segment";
+    errors.input = LIT_CODES.provideName;
   }
   if (selectedSegments.length === 0) {
-    errors.segment = "! Please select one segment from dropdown before proceeding";
+    errors.segment = LIT_CODES.selectOneSegment;
+  
   }
   if (errors.input || errors.segment) {
     setErrorMsg(errors);
@@ -93,8 +97,10 @@ function handleClick(type) {
 }
 
 async function  handleAPiCall() {
+  
   try{
-      const nameValue = nameOfSegment.current.value.replace(/\s+/g, ' ').trim();
+
+  const nameValue = nameOfSegment.current.value.replace(/\s+/g, ' ').trim();
  const finalData =  FormatApi(nameValue,selectedSegments)
  const res = await fetch(uniqueApi,{
     method:"POST",
