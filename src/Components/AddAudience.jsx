@@ -6,6 +6,7 @@ import { LIT_CODES, uniqueApi } from '../utils/Constants';
 
 
 const AddAudience = ({hideAddAudience}) => {
+ const postingFlag = useRef(true);
   const [segments, setSegments] = useState ("");
   const [selectedSegments, setSelectedSegments] = useState ([]);
   const [errorMsg,setErrorMsg] =useState({input:"",
@@ -97,9 +98,9 @@ function handleClick(type) {
 }
 
 async function  handleAPiCall() {
-  
-  try{
-
+  if(postingFlag.current){
+   postingFlag.current  = false;
+    try{
   const nameValue = nameOfSegment.current.value.replace(/\s+/g, ' ').trim();
  const finalData =  FormatApi(nameValue,selectedSegments)
  const res = await fetch(uniqueApi,{
@@ -108,14 +109,14 @@ async function  handleAPiCall() {
      body: JSON.stringify(finalData),
   })
   if(res.ok){
-    hideAddAudience()
-     //open modal showing success
+    hideAddAudience();
   }else{
     console.log(res);
   }
   }catch(error){
 console.log(error)
-  } 
+  }
+} 
 };
 
 function handleInputChange(){
