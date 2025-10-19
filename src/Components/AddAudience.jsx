@@ -5,7 +5,7 @@ import { FormatApi } from '../utils/HelperFunctions/FormatApi';
 import { LIT_CODES, uniqueApi } from '../utils/Constants';
 
 
-const AddAudience = ({hideAddAudience}) => {
+const AddAudience = ({hideAddAudience,showModal}) => {
  const postingFlag = useRef(true);
   const [segments, setSegments] = useState ("");
   const [selectedSegments, setSelectedSegments] = useState ([]);
@@ -109,8 +109,8 @@ async function  handleAPiCall() {
      body: JSON.stringify(finalData),
   })
   if(res.ok){
-    alert("Succesfully Saved")
-    hideAddAudience();
+    showModal()
+   // hideAddAudience();
   }else{
     console.log(res);
   }
