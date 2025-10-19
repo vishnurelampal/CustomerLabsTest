@@ -17,7 +17,7 @@ const MainDiv = () => {
     <div className=''>
   
   <Header showAddAudience={showAddAudience}/>
-   <Body showModal={showModal} handleShowAudience={handleShowAudience} hideAddAudience={hideAddAudience} showAddAudience={showAddAudience}/> 
+   <Body handleShowAudience={handleShowAudience} hideAddAudience={hideAddAudience} showAddAudience={showAddAudience}/> 
     </div>
   )
 }
