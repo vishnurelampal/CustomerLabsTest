@@ -13,7 +13,7 @@ const AddAudience = ({hideAddAudience}) => {
     segment:""
   });
   const nameOfSegment = useRef(null);
-  const errorScroll =useRef(null)
+  const errorScroll = useRef(null)
   function handelChangeSegment(e){
     setSegments(e.target.value)
   }
@@ -128,7 +128,7 @@ function handleInputChange(){
   }else{
     setErrorMsg((prev)=>({
         ...prev,
-        input:"! Please provide the name of the Segment"
+        input:LIT_CODES.provideName
       }))
   }
 }
