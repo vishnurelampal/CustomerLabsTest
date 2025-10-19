@@ -27,6 +27,10 @@ function FormatApi(schemaName, ScehemaArray) {
     const finalFormaated = {};
     finalFormaated["segment_name"] = schemaName.split(" ").join("_");
     finalFormaated["scehma"] = mainArray;
+<<<<<<< HEAD
+=======
+
+>>>>>>> a2401ea7cd5baad9cf69d2a97fd7be3408a2edbf
     return finalFormaated;
   }
 }
