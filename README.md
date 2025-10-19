@@ -1,21 +1,16 @@
-<<<<<<< HEAD
 # CustomerLabsTest
 A branch to add exercise of CustomerLabs hiring prcocess
-=======
-# React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
->>>>>>> a2401ea7cd5baad9cf69d2a97fd7be3408a2edbf
+1.Components Created
+2.Functional Logics Added
+3.Data handling done
+4.API setups done
+5.Styling Done
+6.RWD done
+7.Hardcoded contsatsn moved to utils/constants
+8.Code cleanup review and cleanup done
+9.Git initialized
+10.Unit testing and bugfixed added
+11.Feature : Modal added
+12.User trait and group trait added
+13.Dropdown traits identification added
+14.Readme Updated

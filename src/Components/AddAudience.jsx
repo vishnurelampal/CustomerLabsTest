@@ -151,12 +151,22 @@ className='pb-20'>
   <input ref={nameOfSegment}
   onChange={handleInputChange}
    name  ="segmentName" type="text" placeholder='Name of the Segment'
-    className='p-2 w-10/12 md:w-2/3 bg-gray-100 border-2 border-gray-500 '/>
+    className='p-2 w-10/12 md:w-2/3 bg-gray-100 border-2 border-gray-500 rounded-md'/>
   <p className='text-red-600 font-semibold'>{errorMsg.input}</p>
   <p className='mt-5 pr-2 w-10/12 md:w-2/3'>To save your segment you need to add the schemas to build the query</p>
+  <div className='flex gap-3 ml-auto w-10/12 md:w-2/3 mt-10 font-semibold'>
+    <span className='flex items-center gap-1'>
+  <div className="bg-green-300 w-3 h-3 rounded-full"> </div>
+  <p>- User Traits</p>
+  </span>
+  <span className='flex items-center gap-1'>
+  <div className="bg-pink-600 w-3 h-3 rounded-full"> </div>
+  <p>- Group Traits</p>
+  </span>
+  </div>
   </div>
   {selectedSegments.length>0 && <div id="SegmentAddedDiv"
-   className={`flex sm:pr-12 sm:w-11/12 w-10/12 flex-col mt-10 ml-10 md:w-2/3 overflow-x-hidden border-2 md:border-4 border-blue-300 px-0 md:px-3md:py-1 py-0 ${selectedSegments.length<=3 ? "h-auto overflow-y-hidden":"h-[200px] overflow-y-auto"}`}>
+   className={`flex rounded-2xl sm:pr-12 sm:w-11/12 w-10/12 flex-col mt-10 ml-10 md:w-2/3 overflow-x-hidden border-2 md:border-4 border-blue-300 px-0 md:px-3md:py-1 py-0 ${selectedSegments.length<=3 ? "h-auto overflow-y-hidden":"h-[200px] overflow-y-auto"}`}>
   {selectedSegments.map((item)=><Dropdown key = {item.id} 
    handelChangeSegment= {(e)=>handleDynamicDropDowns(item.id,e.target.value)} 
    removeSelectedDropDown={()=>{removeSelectedDropDown(item.id)}}
