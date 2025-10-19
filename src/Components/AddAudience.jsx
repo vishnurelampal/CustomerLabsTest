@@ -109,6 +109,7 @@ async function  handleAPiCall() {
      body: JSON.stringify(finalData),
   })
   if(res.ok){
+    alert("Succesfully Saved")
     hideAddAudience();
   }else{
     console.log(res);
@@ -133,7 +134,7 @@ function handleInputChange(){
   }
 }
   return (
-    <div className='bg-white overflow-x-hidden shadow-lg z-40 w-1/2 absolute top-0 left-1/2 pb-16 h-full md:overflow-y-auto'>
+    <div className='bg-white overflow-x-hidden shadow-lg z-40 md:w-1/2 absolute top-0 md:left-1/2 pb-16 h-full md:overflow-y-auto'>
        <div id="headerModalDiv" className='w-full h-20 bg-gray-600 fixed   flex items-center'>
         <span className='flex gap-2'> 
           <img 
@@ -144,25 +145,25 @@ function handleInputChange(){
     </div>
     <div className=' w-full h-full'>
 <form onSubmit = {(e)=>{e.preventDefault()}} 
-className='pb-20'
-  >
-  <div className='flex flex-col mt-10 ml-10 '>
+className='pb-20'>
+  <div className='flex flex-col mt-25 md:mt-10 ml-10 '>
 <label htmlFor="segmentName" className='text-lg'>Enter the Name of the Segment</label><br/>
   <input ref={nameOfSegment}
   onChange={handleInputChange}
-   name  ="segmentName" type="text" placeholder='Name of Segment' className='p-2 w-1/3 bg-gray-100 border-2 border-gray-500 '/>
+   name  ="segmentName" type="text" placeholder='Name of the Segment'
+    className='p-2 w-10/12 md:w-2/3 bg-gray-100 border-2 border-gray-500 '/>
   <p className='text-red-600 '>{errorMsg.input}</p>
-  <p className='mt-5'>To Save your segment you need to add the schemas to build the query</p>
+  <p className='mt-5 w-auto pr-2 '>To Save your segment you need to add the schemas to build the query</p>
   </div>
   {selectedSegments.length>0 && <div id="SegmentAddedDiv"
-   className={`flex flex-col mt-10 ml-10 w-2/3 overflow-x-hidden border-4 border-blue-300 px-3 py-1 ${selectedSegments.length<=3 ? "h-auto overflow-y-hidden":"h-[200px] overflow-y-auto"}`}>
+   className={`flex sm:pr-12 sm:w-11/12 w-10/12 flex-col mt-10 ml-10 md:w-2/3 overflow-x-hidden border-2 md:border-4 border-blue-300 px-0 md:px-3md:py-1 py-0 ${selectedSegments.length<=3 ? "h-auto overflow-y-hidden":"h-[200px] overflow-y-auto"}`}>
   {selectedSegments.map((item)=><Dropdown key = {item.id} 
    handelChangeSegment= {(e)=>handleDynamicDropDowns(item.id,e.target.value)} 
    removeSelectedDropDown={()=>{removeSelectedDropDown(item.id)}}
    segments={item.selectedVal}
    dynamic={true}/>)}
     </div>}
-    <div className='ml-10 w-auto px-3 flex flex-col h-auto'>
+    <div className='md:ml-10 w-full md:w-auto px-3 flex flex-col h-auto'>
        <Dropdown handelChangeSegment ={handelChangeSegment} segments = {segments}  dynamic = {false}/>
        <div id = "addSegmentButton"className='flex opacity-70 ml-10'>
    <p className='text-green-600 font-bold'>+ </p> <p className='cursor-pointer underline text-green-600 font-bold'
