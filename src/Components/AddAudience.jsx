@@ -47,7 +47,7 @@ const AddAudience = ({hideAddAudience}) => {
   
   }
   function handleDynamicDropDowns(selctID,newVal){
-   
+   if(newVal=== "") return
    const exisitngSegments = selectedSegments.some(item=>item.selectedVal=== newVal) 
  if(!exisitngSegments){
    setSelectedSegments((prev)=>prev.map((val)=>{
@@ -146,14 +146,14 @@ function handleInputChange(){
     <div className=' w-full h-full'>
 <form onSubmit = {(e)=>{e.preventDefault()}} 
 className='pb-20'>
-  <div className='flex flex-col mt-25 md:mt-10 ml-10 '>
+  <div className='flex flex-col mt-25  ml-10 '>
 <label htmlFor="segmentName" className='text-lg'>Enter the Name of the Segment</label><br/>
   <input ref={nameOfSegment}
   onChange={handleInputChange}
    name  ="segmentName" type="text" placeholder='Name of the Segment'
     className='p-2 w-10/12 md:w-2/3 bg-gray-100 border-2 border-gray-500 '/>
-  <p className='text-red-600 '>{errorMsg.input}</p>
-  <p className='mt-5 w-auto pr-2 '>To Save your segment you need to add the schemas to build the query</p>
+  <p className='text-red-600 font-semibold'>{errorMsg.input}</p>
+  <p className='mt-5 pr-2 w-10/12 md:w-2/3'>To save your segment you need to add the schemas to build the query</p>
   </div>
   {selectedSegments.length>0 && <div id="SegmentAddedDiv"
    className={`flex sm:pr-12 sm:w-11/12 w-10/12 flex-col mt-10 ml-10 md:w-2/3 overflow-x-hidden border-2 md:border-4 border-blue-300 px-0 md:px-3md:py-1 py-0 ${selectedSegments.length<=3 ? "h-auto overflow-y-hidden":"h-[200px] overflow-y-auto"}`}>
@@ -170,7 +170,7 @@ className='pb-20'>
    onClick={addSegment}>Add new Schema</p>
   </div>
     </div>
-    <p ref = {errorScroll} className='text-red-600 ml-12'>{errorMsg.segment}</p>
+    <p ref = {errorScroll} className='font-semibold text-red-600 ml-12'>{errorMsg.segment}</p>
 </form>
 
     </div>

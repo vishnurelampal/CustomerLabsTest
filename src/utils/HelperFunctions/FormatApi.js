@@ -10,9 +10,7 @@ const obj = {
 };
 
 function FormatApi(schemaName, ScehemaArray) {
-  console.log("saved");
   if (schemaName !== "" && ScehemaArray.length > 0) {
-    console.log("came inside");
     const formatted = ScehemaArray.map((item) => {
       return item.selectedVal;
     });
