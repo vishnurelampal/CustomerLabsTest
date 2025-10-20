@@ -2,10 +2,10 @@ import React,{useState,useRef} from 'react'
 import Dropdown from './Dropdown';
 import ModalFooter from './ModalFooter';
 import { FormatApi } from '../utils/HelperFunctions/FormatApi';
-import { LIT_CODES, uniqueApi } from '../utils/Constants';
+import { LIT_CODES, modalMsgs, uniqueApi } from '../utils/Constants';
 
 
-const AddAudience = ({hideAddAudience,showModal}) => {
+const AddAudience = ({hideAddAudience,showModal,LaunchModalWithError}) => {
  const postingFlag = useRef(true);
   const [segments, setSegments] = useState ("");
   const [selectedSegments, setSelectedSegments] = useState ([]);
@@ -13,7 +13,7 @@ const AddAudience = ({hideAddAudience,showModal}) => {
     segment:""
   });
   const nameOfSegment = useRef(null);
-  const errorScroll = useRef(null)
+  const errorScroll = useRef(null);
   function handelChangeSegment(e){
     setSegments(e.target.value)
   }
@@ -98,28 +98,26 @@ function handleClick(type) {
 }
 
 async function  handleAPiCall() {
-  console.log("api called")
+  
   if(postingFlag.current){
    postingFlag.current  = false;
-    try{
-  const nameValue = nameOfSegment.current.value.replace(/\s+/g, ' ').trim();
+const nameValue = nameOfSegment.current.value.replace(/\s+/g, ' ').trim();
  const finalData =  FormatApi(nameValue,selectedSegments)
+    try{
  const res = await fetch(uniqueApi,{
     method:"POST",
     headers: { "Content-Type": "application/json" },
      body: JSON.stringify(finalData),
   })
   if(res.ok){
-    console.log("res ok")
     showModal()
-   // hideAddAudience();
   }else{
-    console.log("err")
-    console.log(res);
+LaunchModalWithError()
+    }
   }
-  }catch(error){
-console.log(error)
-  }
+  catch(error){
+    LaunchModalWithError()
+    }
 } 
 };
 
