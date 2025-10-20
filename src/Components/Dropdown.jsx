@@ -1,9 +1,7 @@
 import React from 'react'
 import { DropDownOptions } from '../utils/Constants'
 const Dropdown = ({handelChangeSegment,segments,removeSelectedDropDown,dynamic}) => {
-    console.log(segments)
     let circleColour;
-    debugger
     if(['account_name','city','state'].includes(segments)){
 circleColour = "bg-pink-600"
     }else if(dynamic){

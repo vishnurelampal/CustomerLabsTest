@@ -98,6 +98,7 @@ function handleClick(type) {
 }
 
 async function  handleAPiCall() {
+  console.log("api called")
   if(postingFlag.current){
    postingFlag.current  = false;
     try{
@@ -109,9 +110,11 @@ async function  handleAPiCall() {
      body: JSON.stringify(finalData),
   })
   if(res.ok){
+    console.log("res ok")
     showModal()
    // hideAddAudience();
   }else{
+    console.log("err")
     console.log(res);
   }
   }catch(error){
